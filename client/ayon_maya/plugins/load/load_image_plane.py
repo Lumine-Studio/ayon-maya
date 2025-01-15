@@ -48,7 +48,6 @@ class CameraWindow(QtWidgets.QDialog):
         for camera in cameras:
             self.widgets["list"].addItem(camera)
 
-
         # Build buttons.
         layout = QtWidgets.QHBoxLayout(self.widgets["buttons"])
         layout.addWidget(self.widgets["okButton"])
@@ -85,7 +84,7 @@ class ImagePlaneLoader(plugin.Loader):
 
     product_types = {"image", "plate", "render"}
     label = "Load imagePlane"
-    representations = {"mov", "exr", "preview", "png", "jpg"}
+    representations = {"mov", "exr", "preview", "png", "jpg", "jpeg"}
     icon = "image"
     color = "orange"
 
