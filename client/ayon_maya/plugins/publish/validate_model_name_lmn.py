@@ -64,7 +64,7 @@ class ValidateModelNames(plugin.MayaInstancePlugin,
         filtered = [node for node in trns if not is_group(node)]
 
         shaders = cls.get_shaders()
-        regex = "[\da-zA-Z]+_(?P<shader>[\da-zA-Z]+)_(GEO|MESH)"
+        regex = "^[a-z][\da-zA-Z]+_(?P<shader>[\da-zA-Z]+)_(GEO|MESH|GES|GEP|OSD|OBJ)"
 
         r = re.compile(regex)
         for obj in filtered:
@@ -112,5 +112,9 @@ class ValidateModelNames(plugin.MayaInstancePlugin,
 
             Must match required naming convention:
 
-            - `AssetPart_IDmaterial_GEO`
+            - `assetPart_IDmaterial_suffix`
+                                
+            Verify that your material IDs align with the list provided in the modeling tool's naming organizer:
+                                
+            - If a required material ID is not available, request it through your SPV or Lead
         """)
