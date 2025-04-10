@@ -48,7 +48,6 @@ class CameraWindow(QtWidgets.QDialog):
         for camera in cameras:
             self.widgets["list"].addItem(camera)
 
-
         # Build buttons.
         layout = QtWidgets.QHBoxLayout(self.widgets["buttons"])
         layout.addWidget(self.widgets["okButton"])
