@@ -278,7 +278,7 @@ def generate_capture_preset(instance, camera, path,
     # Isolate view is requested by having objects in the set besides a
     # camera. If there is only 1 member it'll be the camera because we
     # validate to have 1 camera only.
-    if instance.data["isolate"] and len(instance.data["setMembers"]) > 1:
+    if instance.data["isolate"]:  # and len(instance.data["setMembers"]) > 1:
         preset["isolate"] = instance.data["setMembers"]
 
     # Override camera options
@@ -2114,8 +2114,8 @@ def get_related_sets(node):
     sets = [
         s for s in sets
         if (
-           not cmds.attributeQuery("id", node=s, exists=True)
-           or cmds.getAttr(f"{s}.id") not in ignored
+            not cmds.attributeQuery("id", node=s, exists=True)
+            or cmds.getAttr(f"{s}.id") not in ignored
         )
     ]
     if not sets:
@@ -2526,8 +2526,8 @@ def get_frame_range(include_animation_range=False):
         folder_path,
         fields={"id"})
     task_entity = ayon_api.get_task_by_name(
-            project_name, folder_entity["id"], task_name
-        )
+        project_name, folder_entity["id"], task_name
+    )
 
     task_attributes = task_entity["attrib"]
 
