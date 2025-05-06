@@ -64,7 +64,7 @@ class ValidateModelNames(plugin.MayaInstancePlugin,
         filtered = [node for node in trns if not is_group(node)]
 
         shaders = cls.get_shaders()
-        regex = "^[a-z][\da-zA-Z]+_(?P<shader>[\da-zA-Z]+)_(GEO|MESH|GES|GEP|OSD|OBJ)"
+        regex = "(?:[a-zA-Z0-9_]+\|)?[a-z][\da-zA-Z]+_(?P<shader>[\da-zA-Z]+)_(GEO|MESH|GES|GEP|OSD|OBJ)"
 
         r = re.compile(regex)
         for obj in filtered:
