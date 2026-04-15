@@ -156,7 +156,8 @@ class CollectGLTFModel(BaseSettingsModel):
 
 
 class CollectMayaUsdFilterPropertiesModel(BaseSettingsModel):
-    enabled: bool = SettingsField(title="Maya USD Export Chaser: Filter Properties")
+    enabled: bool = SettingsField(
+        title="Maya USD Export Chaser: Filter Properties")
     default_filter: str = SettingsField(
         title="Default Filter",
         description=(
@@ -518,6 +519,7 @@ class ExtractAlembicModel(BaseSettingsModel):
 class ExtractObjModel(BaseSettingsModel):
     enabled: bool = SettingsField(title="Enabled")
     optional: bool = SettingsField(title="Optional")
+    active: bool = SettingsField(title="Active")
 
 
 class ExtractModelModel(BaseSettingsModel):

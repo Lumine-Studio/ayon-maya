@@ -10,7 +10,7 @@ from maya import cmds
 
 def get_textures_from_mtl(mtl_filepath: str) -> "set[str]":
     """Return all textures from a OBJ `.mtl` sidecar file.
-    
+
     Each line has a separate entry, like `map_Ka`, where the filename is the
     last argument on that line.
 
@@ -18,7 +18,7 @@ def get_textures_from_mtl(mtl_filepath: str) -> "set[str]":
         Filenames with spaces in them are saved along with the `.obj` but with
         spaces replaced to underscores in the `.mtl` file so they can be
         detected as the single argument.
-    
+
     Also see:
         https://paulbourke.net/dataformats/mtl/
 
@@ -28,16 +28,16 @@ def get_textures_from_mtl(mtl_filepath: str) -> "set[str]":
     Returns:
         set[str]: Set of files referenced in the MTL file.
     """
-    
+
     map_prefixes = (
-        "map_Ka ", 
-        "map_Kd ", 
-        "map_Ks ", 
-        "map_Ns ", 
-        "map_d ", 
-        "disp ", 
+        "map_Ka ",
+        "map_Kd ",
+        "map_Ks ",
+        "map_Ns ",
+        "map_d ",
+        "disp ",
         "decal ",
-        "bump ", 
+        "bump ",
         "refl "
     )
 
@@ -65,7 +65,7 @@ class ExtractObj(plugin.MayaExtractorPlugin,
     order = pyblish.api.ExtractorOrder
     label = "Extract OBJ"
     families = ["model"]
-
+    active = False
     # Default OBJ export options.
     obj_options = {
         "groups": 1,
@@ -115,7 +115,7 @@ class ExtractObj(plugin.MayaExtractorPlugin,
             f"{key}={val}" for key, val in options.items()
         )
 
-        # Export    
+        # Export
         with lib.no_display_layers(instance):
             with lib.displaySmoothness(members,
                                        divisionsU=0,
