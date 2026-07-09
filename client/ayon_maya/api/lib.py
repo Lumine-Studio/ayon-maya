@@ -305,7 +305,7 @@ def generate_capture_preset(instance, camera, path,
     # Isolate view is requested by having objects in the set besides a
     # camera. If there is only 1 member it'll be the camera because we
     # validate to have 1 camera only.
-    if instance.data["isolate"] and len(instance.data["setMembers"]) > 1:
+    if instance.data["isolate"]:  # and len(instance.data["setMembers"]) > 1:
         preset["isolate"] = instance.data["setMembers"]
 
     # Override camera options
@@ -2226,8 +2226,8 @@ def get_related_sets(node):
     sets = [
         s for s in sets
         if (
-           not cmds.attributeQuery("id", node=s, exists=True)
-           or cmds.getAttr(f"{s}.id") not in ignored
+            not cmds.attributeQuery("id", node=s, exists=True)
+            or cmds.getAttr(f"{s}.id") not in ignored
         )
     ]
     if not sets:
