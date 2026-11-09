@@ -15,7 +15,7 @@ class ValidateShadingEngine(plugin.MayaInstancePlugin,
                             OptionalPyblishPluginMixin):
     """Validate all shading engines are named after the surface material.
 
-    Shading engines should be named "{surface_shader}SG"
+    Shading engines should be named "{surface_shader}_SG"
     """
 
     order = ValidateContentsOrder
@@ -63,7 +63,7 @@ class ValidateShadingEngine(plugin.MayaInstancePlugin,
                 continue
 
             material = materials[0]  # there should only ever be one input
-            name = material + "SG"
+            name = material + "_SG"
             if shading_engine != name:
                 # Ignore referenced or read-only shading engines
                 if cmds.referenceQuery(shading_engine,
@@ -88,7 +88,7 @@ class ValidateShadingEngine(plugin.MayaInstancePlugin,
         for shading_engine in shading_engines:
             name = (
                 cmds.listConnections(shading_engine + ".surfaceShader")[0]
-                + "SG"
+                + "_SG"
             )
             cmds.rename(shading_engine, name)
 
